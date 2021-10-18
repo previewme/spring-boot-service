@@ -9,5 +9,10 @@ jar {
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "${rootProject.name}:${project.name}"
+    }
 }

@@ -20,3 +20,8 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectKey", "${rootProject.name}:${project.name}"
+    }
+}
