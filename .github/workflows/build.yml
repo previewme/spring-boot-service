@@ -39,7 +39,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - test
-      - build
       - sonarcloud
     steps:
       - name: Workflow Conclusion Action
