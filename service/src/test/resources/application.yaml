@@ -1,0 +1,7 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: spring-boot-service
+  flyway:
+    enabled: false
