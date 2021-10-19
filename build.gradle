@@ -67,7 +67,7 @@ allprojects {
 
 sonarqube {
     properties {
-        property 'sonar.projectKey',  ${rootProject.name}
+        property 'sonar.projectKey',  "${rootProject.name}"
         property 'sonar.host.url', 'https://sonarcloud.io'
         property 'sonar.organization', 'previewme'
     }
