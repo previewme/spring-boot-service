@@ -1,9 +1,15 @@
 plugins {
+    id "com.gorylenko.gradle-git-properties" version "2.3.1"
     id 'org.springframework.boot' version '2.5.5'
 }
 
 jar {
     archivesBaseName = rootProject.name + "-" + project.name
+    enabled = false
+}
+
+springBoot {
+    buildInfo()
 }
 
 dependencies {
