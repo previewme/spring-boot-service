@@ -3,5 +3,23 @@ spring:
     banner-mode: off
   application:
     name: spring-boot-service
+  profiles:
+    active: integration-tests
+  jackson:
+    default-property-inclusion: non_empty
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_BQiFUBlRy
   flyway:
     enabled: false
+
+previewme:
+  resource:
+    path: /spring-boot-service
+
+server:
+  error:
+    whitelabel:
+      enabled: false

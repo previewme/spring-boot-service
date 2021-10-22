@@ -3,3 +3,46 @@ spring:
     banner-mode: off
   application:
     name: spring-boot-service
+  profiles:
+    active: localhost
+  jackson:
+    default-property-inclusion: non_empty
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_BQiFUBlRy
+
+previewme:
+  resource:
+    path: /spring-boot-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+  metrics:
+    enable:
+      jvm: true
+      http: true
+      cache: true
+      hikaricp: true
+      system: false
+      jdbc: false
+      logback: false
+      tomcat: false
+      process:
+        enabled: false
+        cpu: true
+    tags:
+      application: ${spring.application.name}
+      container: ${HOSTNAME:}${COMPUTERNAME:}
+
+server:
+  error:
+    whitelabel:
+      enabled: false

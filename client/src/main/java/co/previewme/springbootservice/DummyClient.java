@@ -1,10 +1,10 @@
 package co.previewme.springbootservice;
 
-public class Client {
+public class DummyClient {
 
     private final String name;
 
-    public Client(String name) {
+    public DummyClient(String name) {
         this.name = name;
     }
 
