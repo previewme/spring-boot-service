@@ -35,6 +35,7 @@ dependencies {
 ext.repository = System.getenv('DOCKER_REPOSITORY') ?: jar.getArchiveBaseName().getOrNull()
 
 docker {
+    dependsOn bootJar
     name "${repository}:latest"
     tag 'ECR', "${repository}:${version}"
     files bootJar.archiveFile.getOrNull()
