@@ -6,7 +6,7 @@ import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class DummyControllerTests {
+class DummyControllerTests {
 
     private DummyController dummyController = new DummyController();
 
