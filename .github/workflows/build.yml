@@ -45,7 +45,7 @@ jobs:
           cache: 'gradle'
 
       - run: docker version
-      - run: docker build -t test -f service/Dockerfile
+      - run: docker build -t test -f service/Dockerfile .
 
       - run: ./gradlew clean assemble docker dockerTag
 
