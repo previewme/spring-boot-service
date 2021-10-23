@@ -4,7 +4,7 @@ spring:
   application:
     name: spring-boot-service
   profiles:
-    active: integration-tests
+    active: test
   jackson:
     default-property-inclusion: non_empty
   security:

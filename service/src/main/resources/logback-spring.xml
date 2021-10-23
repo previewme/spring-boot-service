@@ -34,13 +34,13 @@
     </encoder>
   </appender>
 
-  <springProfile name="localhost">
-    <root level="INFO">
+  <springProfile name="localhost | test">
+    <root level="DEBUG">
       <appender-ref ref="CONSOLE"/>
     </root>
   </springProfile>
 
-  <springProfile name="!localhost">
+  <springProfile name="!localhost &amp; !test">
     <root level="INFO">
       <appender-ref ref="JSON"/>
     </root>

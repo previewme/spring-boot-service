@@ -30,7 +30,21 @@ jobs:
           path: |
             client/build/reports/
             service/build/reports/
-          retention-days: 1
+
+  build:
+    needs: test
+    name: Build artefacts and container
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - run: ./gradlew clean assemble docker dockerTag
 
   sonarcloud:
     needs: test

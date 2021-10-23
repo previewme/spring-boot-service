@@ -15,8 +15,20 @@ allprojects {
     apply plugin: 'org.sonarqube'
 
     group = 'co.previewme'
-    version = '0.0.1-SNAPSHOT'
+
+    ext.major = 0
+    ext.minor = 1
+    ext.ci = System.getenv('CI')
+    ext.run = System.getenv('GITHUB_RUN_ID') ?: '0'
+    version = ext.major + '.' + ext.minor + '.' + ext.run;
+    if (ext.ci != 'true') {
+        version = version + '-SNAPSHOT'
+    }
+
     sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    compileJava.options.encoding = "UTF-8"
+    compileTestJava.options.encoding = "UTF-8"
 
     configurations {
         compileOnly {
@@ -67,7 +79,7 @@ allprojects {
 
 sonarqube {
     properties {
-        property 'sonar.projectKey',  "previewme_${rootProject.name}"
+        property 'sonar.projectKey', "previewme_${rootProject.name}"
         property 'sonar.host.url', 'https://sonarcloud.io'
         property 'sonar.organization', 'previewme'
     }

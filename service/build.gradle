@@ -1,5 +1,6 @@
 plugins {
     id "com.gorylenko.gradle-git-properties" version "2.3.1"
+    id "com.palantir.docker" version "0.30.0"
     id 'org.springframework.boot' version '2.5.5'
 }
 
@@ -29,6 +30,14 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+}
+
+ext.repository = System.getenv('DOCKER_REPOSITORY') ?: jar.getArchiveBaseName().getOrNull()
+
+docker {
+    name "${repository}:latest"
+    tag 'ECR', "${repository}:${version}"
+    files bootJar.archiveFile.getOrNull()
 }
 
 sonarqube {
