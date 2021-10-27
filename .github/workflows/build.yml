@@ -12,6 +12,9 @@ jobs:
   setup-ecr:
     name: Setup ECR Repository
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: deployment/ecr
     steps:
       - uses: actions/checkout@v2
 
@@ -123,9 +126,6 @@ jobs:
      - test
     name: Quality Gate
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: deployment/ecr
 
     steps:
       - uses: actions/checkout@v2
