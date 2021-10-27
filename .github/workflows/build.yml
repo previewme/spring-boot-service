@@ -123,6 +123,10 @@ jobs:
      - test
     name: Quality Gate
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: deployment/ecr
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -169,7 +173,7 @@ jobs:
         with:
           status: ${{ env.WORKFLOW_CONCLUSION }}
           author_name: GitHub Action
-          fields: repo,commit,message,author
+          fields: repo,commit,message,author,action,workflow,took
           mention: channel
           if_mention: failure,cancelled
         env:
