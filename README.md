@@ -1,6 +1,6 @@
 # spring-boot-service
 
-[![Build](https://github.com/previewme/lambda-typescript/actions/workflows/build.yml/badge.svg)](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml)
+[![Build](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml/badge.svg)](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=coverage)](https://sonarcloud.io/dashboard?id=previewme_spring-boot-service)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=previewme_spring-boot-service)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=alert_status)](https://sonarcloud.io/dashboard?id=previewme_spring-boot-service)
@@ -75,7 +75,7 @@ For code quality checks we use SonarCloud and the project must be setup in Sonar
 
 ### settings.gradle
 
-1. Update `rootProject.name` to be the correct project name
+1. Update `rootProject.name` to be the correct project name. E.g: foo
 
 ### Java/SpringBoot configuration
 
@@ -85,4 +85,18 @@ For code quality checks we use SonarCloud and the project must be setup in Sonar
 
 ## Deployment
 
-This project uses Terraform to deploy the service to ECS cluster.
+This project uses Terraform to deploy the service to the PreviewMe ECS cluster.
+
+### Setting up ECR repository
+The following changes need to be made in the Terraform configuration
+
+#### Workspace names
+In `deployment/ecr/backend.tf` replace the workspace name to match the project name in settings.gradle. E.g: foo-ecr
+
+In `deployment/service/backend.tf` replace the workspace prefix to match the project name in settings.gradle. E.g: foo-service
+
+#### GitHub Workflow updates
+The GitHub workflows will use the repository name for the application name, it is essential to name the repository appropriately. E.g: foo-service.
+
+
+
