@@ -82,6 +82,21 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
+      - name: Get ECR Repository URL
+        id: ecr-repository-url
+        run: terraform output -no-color -raw repository_url
+
+      - name: Write ECR repository URL to artifact
+        id: ecr-artifact
+        run: echo "${{ steps.ecr-repository-url.outputs.stdout }}" > ${{ github.workspace }}/ecr-url.txt
+
+      - name: Upload ecr repository url
+        uses: actions/upload-artifact@v2.2.1
+        with:
+          name: ecr
+          path: ${{ github.workspace }}/ecr-url.txt
+          if-no-files-found: error
+
   test:
     name: Run Tests and Checks
     runs-on: ubuntu-latest

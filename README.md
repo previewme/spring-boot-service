@@ -52,8 +52,7 @@ docker run -p 8080:8080 -i -t -e JAVA_OPTS="-agentlib:jdwp=transport=dt_socket,s
 
 ## Initial Project Setup
 
-To set up the project by forking this project, then the following instructions need to be carried
-out.
+To set up the project by forking this project, then the following instructions need to be carried out. Please read these instructions carefully to ensure no steps are missed out.
 
 ## SonarCloud
 
@@ -87,16 +86,20 @@ For code quality checks we use SonarCloud and the project must be setup in Sonar
 
 This project uses Terraform to deploy the service to the PreviewMe ECS cluster.
 
+### AWS Credentials
+The ECR and Service deployment require AWS Credentials to be setup in Terraform Cloud. This can be done by running the [terraform-cloud-boostrap](https://github.com/previewme/terraform-cloud-bootstrap) action.
+
 ### Setting up ECR repository
-The following changes need to be made in the Terraform configuration
+The following changes need to be made in the Terraform configuration. 
+
+The GitHub workflow will use the repository name for the application name, it is essential to name the repository appropriately. E.g: foo-service.
+
 
 #### Workspace names
-In `deployment/ecr/backend.tf` replace the workspace name to match the project name in settings.gradle. E.g: foo-ecr
+* `deployment/ecr/backend.tf` replace the workspace name to match the project name in settings.gradle. E.g: foo-ecr
+* `deployment/service/backend.tf` replace the workspace prefix to match the project name in settings.gradle. E.g: foo-service
 
-In `deployment/service/backend.tf` replace the workspace prefix to match the project name in settings.gradle. E.g: foo-service
 
-#### GitHub Workflow updates
-The GitHub workflows will use the repository name for the application name, it is essential to name the repository appropriately. E.g: foo-service.
 
 
 
