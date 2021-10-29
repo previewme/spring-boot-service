@@ -83,14 +83,17 @@ jobs:
         run: terraform apply -auto-approve
 
       - name: Get ECR Repository URL
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         id: ecr-repository-url
         run: terraform output -no-color -raw repository_url
 
       - name: Write ECR repository URL to artifact
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         id: ecr-artifact
         run: echo "${{ steps.ecr-repository-url.outputs.stdout }}" > ${{ github.workspace }}/ecr-url.txt
 
       - name: Upload ecr repository url
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: actions/upload-artifact@v2.2.1
         with:
           name: ecr
@@ -188,7 +191,7 @@ jobs:
         with:
           status: ${{ env.WORKFLOW_CONCLUSION }}
           author_name: GitHub Action
-          fields: repo,commit,message,author,action,workflow,took
+          fields: repo,commit,message,author,action,workflow
           mention: channel
           if_mention: failure,cancelled
         env:
