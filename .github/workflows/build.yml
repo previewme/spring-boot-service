@@ -137,6 +137,27 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
+      - name: Download all artifacts
+        uses: actions/download-artifact@v2.0.6
+
+      - name: Read ECR file
+        id: ecr
+        run: echo ::set-output name=url::$(cat ${{ github.workspace }}/ecr/ecr-url.txt)
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          role-to-assume: ${{ secrets.OPERATIONS_ROLE_TO_ASSUME }}
+          role-skip-session-tagging: true
+          role-duration-seconds: 900
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
       - run: ./gradlew clean assemble docker dockerTag
 
       - run: docker images
