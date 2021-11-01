@@ -139,6 +139,8 @@ jobs:
 
       - run: ./gradlew clean assemble docker dockerTag
 
+      - run: docker images
+
   sonarcloud:
     needs:
      - test

@@ -94,7 +94,6 @@ The following changes need to be made in the Terraform configuration.
 
 The GitHub workflow will use the repository name for the application name, it is essential to name the repository appropriately. E.g: foo-service.
 
-
 #### Workspace names
 * `deployment/ecr/backend.tf` replace the workspace name to match the project name in settings.gradle. E.g: foo-ecr
 * `deployment/service/backend.tf` replace the workspace prefix to match the project name in settings.gradle. E.g: foo-service
