@@ -140,9 +140,12 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v2.0.6
 
+
       - name: Read ECR file
         id: ecr
-        run: DOCKER_REPOSITORY=$(cat ${{ github.workspace }}/ecr/ecr-url.txt)
+        run: echo ::set-output name=url::$(cat ${{ github.workspace }}/ecr/ecr-url.txt)
+
+      - run: echo "DOCKER_REPOSITORY=${{ steps.ecr.outputs.url }}" >> $GITHUB_ENV
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
