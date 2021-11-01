@@ -142,7 +142,7 @@ jobs:
 
       - name: Read ECR file
         id: ecr
-        run: echo ::set-output name=url::$(cat ${{ github.workspace }}/ecr/ecr-url.txt)
+        run: DOCKER_REPOSITORY=$(cat ${{ github.workspace }}/ecr/ecr-url.txt)
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
