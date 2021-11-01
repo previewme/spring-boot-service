@@ -19,7 +19,7 @@ allprojects {
     ext.major = 0
     ext.minor = 1
     ext.ci = System.getenv('CI')
-    ext.run = System.getenv('GITHUB_RUN_ID') ?: '0'
+    ext.run = System.getenv('GITHUB_RUN_NUMBER') ?: '0'
     version = ext.major + '.' + ext.minor + '.' + ext.run;
     if (ext.ci != 'true') {
         version = version + '-SNAPSHOT'
