@@ -1,4 +1,4 @@
-FROM amazoncorretto:17.0.1-alpine3.14
+FROM amazoncorretto:17.0.1
 
 RUN yum -y install shadow-utils
 RUN groupadd -g 999 appuser && useradd -r -u 999 -g appuser appuser
