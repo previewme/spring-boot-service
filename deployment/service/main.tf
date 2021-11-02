@@ -20,7 +20,7 @@ data "aws_sns_topic" "alert_topic" {
 
 locals {
   workspace  = var.TFC_WORKSPACE_NAME != "" ? trimprefix(var.TFC_WORKSPACE_NAME, "spring-boot-service-") : terraform.workspace
-  account_id = data.terraform_remote_state.common.aws_account_id
+  account_id = data.terraform_remote_state.common.outputs.aws_account_id
 }
 
 provider "aws" {
