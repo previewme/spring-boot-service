@@ -40,9 +40,7 @@ resource "aws_lb_listener_rule" "application_rule" {
 
   condition {
     host_header {
-      values = [
-        data.terraform_remote_state.common.outputs.cloudfront_api_domain
-      ]
+      values = data.terraform_remote_state.common.outputs.api_domain
     }
   }
 
