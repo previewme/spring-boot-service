@@ -46,3 +46,21 @@ server:
   error:
     whitelabel:
       enabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "localhost"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "development"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "production"
