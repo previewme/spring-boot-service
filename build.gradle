@@ -16,13 +16,10 @@ allprojects {
 
     group = 'co.previewme'
 
-    ext.major = 0
-    ext.minor = 1
     ext.ci = System.getenv('CI')
-    ext.run = System.getenv('GITHUB_RUN_NUMBER') ?: '0'
-    version = ext.major + '.' + ext.minor + '.' + ext.run;
-    if (ext.ci != 'true') {
-        version = version + '-SNAPSHOT'
+    version = '0.0.1-SNAPSHOT'
+    if (ext.ci = 'true') {
+        version = System.getenv('SERVICE_VERSION')
     }
 
     sourceCompatibility = JavaVersion.VERSION_17
