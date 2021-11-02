@@ -1,4 +1,6 @@
 output "appspec_file" {
+  sensitive = true
+
   value = jsonencode({
     "version" = "0.0"
 
@@ -40,6 +42,8 @@ output "service_name" {
 }
 
 output "task_definition_file" {
+  sensitive = true
+
   value = jsonencode({
     "containerDefinitions" = jsondecode(aws_ecs_task_definition.task_definition.container_definitions)
     "cpu"                  = aws_ecs_task_definition.task_definition.cpu
@@ -50,5 +54,4 @@ output "task_definition_file" {
     "taskRoleArn"          = aws_ecs_task_definition.task_definition.task_role_arn
     "proxyConfiguration"   = null
   })
-  sensitive = true
 }

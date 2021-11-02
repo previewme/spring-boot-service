@@ -263,19 +263,13 @@ jobs:
           echo "::set-output name=ecs-cluster-name::$(terraform-bin output -no-color -raw ecs_cluster_name)"
           echo "::set-output name=codedeploy-application-name::$(terraform-bin output -no-color -raw codedeploy_application_name)"
           echo "::set-output name=codedeploy-group-name::$(terraform-bin output -no-color -raw codedeploy_deployment_group)"
-
-      - name: Get task definition
-        id: task-definition
-        run: terraform output -no-color -raw task_definition_file
-
-      - name: Get app spec file
-        id: app-spec
-        run: terraform output -no-color -raw appspec_file
+          echo "::set-output name=task-definition::$(terraform-bin output -no-color -raw task_definition_file)"
+          echo "::set-output name=appspec-file::$(terraform-bin output -no-color -raw appspec_file)"
 
       - name: Write CodeDeploy files
         run: |
-          echo '${{ steps.task-definition.outputs.stdout }}' > ${{ github.workspace }}/task-definition.json
-          echo '${{ steps.app-spec.outputs.stdout }}' > ${{ github.workspace }}/appspec.json
+          echo '${{ steps.task-definition.outputs.task-definition }}' > ${{ github.workspace }}/task-definition.json
+          echo '${{ steps.app-spec.outputs.appspec-file }}' > ${{ github.workspace }}/appspec.json
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.5.11
