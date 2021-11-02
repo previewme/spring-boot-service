@@ -12,6 +12,8 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_BQiFUBlRy
+  flyway:
+    enabled: false
 
 previewme:
   resource:
