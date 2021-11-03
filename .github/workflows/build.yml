@@ -270,8 +270,8 @@ jobs:
 
       - name: Write CodeDeploy files
         run: |
-          echo "::add-mask::${{ steps.terraform.outputs.task-definition }}" > ${{ github.workspace }}/task-definition.json
-          echo "::add-mask::${{ steps.terraform.outputs.appspec-file }}" > ${{ github.workspace }}/appspec.json
+          echo '${{ steps.terraform.outputs.task-definition }}' > ${{ github.workspace }}/task-definition.json
+          echo '${{ steps.terraform.outputs.appspec-file }}' > ${{ github.workspace }}/appspec.json
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.5.11
