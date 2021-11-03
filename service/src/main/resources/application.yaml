@@ -3,6 +3,8 @@ spring:
     banner-mode: off
   application:
     name: spring-boot-service
+  config:
+    import: "optional:aws-parameterstore:,optional:aws-secretsmanager:"
   profiles:
     active: localhost
   jackson:
@@ -48,6 +50,13 @@ server:
   error:
     whitelabel:
       enabled: false
+
+aws:
+  paramstore:
+    region: us-east-1
+  secretsmanager:
+    region: us-east-1
+
 
 ---
 spring:

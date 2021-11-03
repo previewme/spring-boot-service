@@ -81,6 +81,14 @@ For code quality checks we use SonarCloud and the project must be setup in Sonar
 1. Update the packages to suit your service.
 2. Update/Remove dummy classes, methods and tests.
 3. Update the application name in the spring configuration to suit your service.
+4. Application configuration and secrets are stored in [AWS Parameter store or AWS secrets manager](https://docs.awspring.io/spring-cloud-aws/docs/2.3.0/reference/html/index.html#integrating-your-spring-cloud-application-with-the-aws-parameter-store)
+   1. Configuration can be set globally for all services or overridden/set per service.
+
+## Versions
+
+We follow semantic versioning where possible. Generally we do not update versions unless there has been a breaking change in our service contracts.
+
+The versions can be increased in the GitHub Action file when required.
 
 ## Deployment
 

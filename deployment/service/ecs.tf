@@ -36,6 +36,11 @@ resource "aws_iam_role" "task_role" {
   assume_role_policy = data.aws_iam_policy_document.task_service_assume_role.json
 }
 
+resource "aws_iam_role_policy_attachment" "service_parameters" {
+  role       = aws_iam_role.task_role.name
+  policy_arn = data.terraform_remote_state.common.outputs.service_configuration_policy_arn
+}
+
 resource "aws_cloudwatch_log_group" "log_group" {
   name              = format("/aws/ecs/%s", var.application_name)
   retention_in_days = var.cloudwatch_log_retention_period
