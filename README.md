@@ -89,7 +89,7 @@ This project uses Terraform to deploy the service to the PreviewMe ECS cluster.
 ### AWS Credentials
 The ECR and Service deployment require AWS Credentials to be setup in Terraform Cloud. This can be done by running the [terraform-cloud-boostrap](https://github.com/previewme/terraform-cloud-bootstrap) action.
 
-### Setting up ECR repository
+### ECR repository Deployment
 The following changes need to be made in the Terraform configuration. 
 
 The GitHub workflow will use the repository name for the application name, it is essential to name the repository appropriately. E.g: foo-service.
@@ -98,7 +98,8 @@ The GitHub workflow will use the repository name for the application name, it is
 * `deployment/ecr/backend.tf` replace the workspace name to match the project name in settings.gradle. E.g: foo-ecr
 * `deployment/service/backend.tf` replace the workspace prefix to match the project name in settings.gradle. E.g: foo-service
 
+### Service Deployment
+To ensure the service deploys correctly the following steps need to be carried out:
 
-
-
-
+1. Update the `application_name` and `application_path` in `deployment/service/variables.tf
+2. Enable production deployments by replacing ```if: ${{ false }}``` with ```if: github.ref == 'refs/heads/main' && github.event_name == 'push'```
