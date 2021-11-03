@@ -1,9 +1,9 @@
 # spring-boot-service
 
-[![Build](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml/badge.svg)](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=coverage)](https://sonarcloud.io/dashboard?id=previewme_spring-boot-service)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=previewme_spring-boot-service)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=alert_status)](https://sonarcloud.io/dashboard?id=previewme_spring-boot-service)
+[![Service Build](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml/badge.svg)](https://github.com/previewme/spring-boot-service/actions/workflows/build.yml)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=coverage&token=eade2272df62550b313135a6a7658ae5539cb1ab)](https://sonarcloud.io/summary/new_code?id=previewme_spring-boot-service)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=vulnerabilities&token=eade2272df62550b313135a6a7658ae5539cb1ab)](https://sonarcloud.io/summary/new_code?id=previewme_spring-boot-service)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=previewme_spring-boot-service&metric=alert_status&token=eade2272df62550b313135a6a7658ae5539cb1ab)](https://sonarcloud.io/summary/new_code?id=previewme_spring-boot-service)
 
 A template project which creates a service using spring boot. This is based
 on [spring-boot-java-base by bnc-projects](https://github.com/bnc-projects/spring-boot-java-base/).
